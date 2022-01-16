@@ -1,0 +1,1 @@
+about = "Автор @ArthurKarimullin\nбла-бла"
