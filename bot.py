@@ -1,7 +1,7 @@
 import telebot
 import markup 
 import texts
-import config
+from config import *
 
 bot = telebot.TeleBot(TOKEN)
 
