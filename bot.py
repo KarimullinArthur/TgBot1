@@ -8,7 +8,7 @@ bot = telebot.TeleBot(TOKEN)
 @bot.message_handler(commands='start')
 def start(message):
     chat_id = message.chat.id
-    bot.send_message(chat_id,'Hello',reply_markup=markup.menu)
+    bot.send_message(chat_id,'Дарова',reply_markup=markup.menu)
 
 @bot.message_handler(content_types='text')
 def menu(message):
@@ -32,7 +32,6 @@ def funcMunu(message):
     if text == "Мой ID":
         msg = bot.send_message(chat_id,chat_id)
         bot.register_next_step_handler(msg,funcMunu)
-
 
     if text == "Назад":
         msg = bot.send_message(chat_id,text,reply_markup=markup.menu)
