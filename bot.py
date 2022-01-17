@@ -35,7 +35,7 @@ def funcMunu(message):
 
 
     if text == "Назад":
-        msg = bot.send_message(chat_id,'Hello',reply_markup=markup.menu)
+        msg = bot.send_message(chat_id,text,reply_markup=markup.menu)
         bot.register_next_step_handler(msg,menu)
 
 bot.infinity_polling()
