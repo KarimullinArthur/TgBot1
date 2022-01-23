@@ -33,7 +33,7 @@ def menu(message):
     text = message.text
 
     if text == "Об авторе":
-        bot.send_message(chat_id,texts.about,reply_markup=markup.menuIn)
+        bot.send_message(chat_id,texts.about,disable_web_page_preview=True,reply_markup=markup.menuIn)
 
     if text == "Привет":
         bot.send_message(chat_id,'Hi')

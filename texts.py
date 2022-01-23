@@ -1,1 +1,1 @@
-about = "Автор @ArthurKarimullin\nбла-бла"
+about = "Автор @ArthurKarimullin\n\nЭтот бот с открытым исходным кодом вот ссылка - github.com/KarimullinArthur/TgBot1"
