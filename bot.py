@@ -1,14 +1,31 @@
 import telebot
+import sqlite3
 import markup 
 import texts
 from config import *
 
 bot = telebot.TeleBot(TOKEN)
 
+
+conn = sqlite3.connect('date.db')
+cursor = conn.cursor()
+
+cursor.execute("""CREATE TABLE IF NOT EXISTS users(
+    id INTEGER PRIMARY KEY)
+""")
+conn.commit()
+
 @bot.message_handler(commands='start')
 def start(message):
     chat_id = message.chat.id
     bot.send_message(chat_id,'Дарова',reply_markup=markup.menu)
+
+    conn = sqlite3.connect('date.db')
+    cursor = conn.cursor()
+
+        
+    cursor.execute("INSERT INTO users(id) VALUES ('{}')".format(chat_id))
+    conn.commit()
 
 @bot.message_handler(content_types='text')
 def menu(message):
