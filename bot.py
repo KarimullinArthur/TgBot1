@@ -1,5 +1,4 @@
 import telebot
-import sqlite3
 import markup 
 import texts
 from config import *
