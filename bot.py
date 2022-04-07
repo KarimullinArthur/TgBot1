@@ -1,5 +1,7 @@
 import telebot
 import sqlite3
+import json
+import ast
 import markup 
 import texts
 from config import *
@@ -32,22 +34,43 @@ def menu(message):
     if text == "Об авторе":
         bot.send_message(chat_id,texts.about,disable_web_page_preview=True,reply_markup=markup.menuIn)
 
-    if text == "Привет":
+    elif text == "Привет":
         bot.send_message(chat_id,'Hi')
 
-    if text == "Функции":
+    elif text == "Функции":
         msg = bot.send_message(chat_id,text,reply_markup=markup.func)
-        bot.register_next_step_handler(msg,funcMunu)
+        bot.register_next_step_handler(msg,funcMenu)
 
-def funcMunu(message):
+def funcMenu(message):
     chat_id = message.chat.id
     text = message.text
 
     if text == "Мой ID":
         msg = bot.send_message(chat_id,chat_id)
-        bot.register_next_step_handler(msg,funcMunu)
+        bot.register_next_step_handler(msg,funcMenu)
 
-    if text == "Назад":
+    elif text == "Узнать @username по ID":
+        msg = bot.send_message(chat_id,f"@{message.from_user.username}")
+        userName = bot.get_chat(chat_id)
+
+        #a = str(a)
+
+        #userName = json.dumps(a)
+        userName = str(userName)
+        userName.replace("\'",'\"')
+
+        userName = json.dumps(userName)
+
+        userName = json.loads(userName)
+        #userName = ast.literal_eval(userName)
+
+        print(userName)
+        print(type(userName))
+
+        bot.send_message(chat_id,userName['username'])
+        bot.register_next_step_handler(msg,funcMenu)
+
+    elif text == "Назад":
         msg = bot.send_message(chat_id,text,reply_markup=markup.menu)
         bot.register_next_step_handler(msg,menu)
 print('Run!')
