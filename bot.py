@@ -32,10 +32,10 @@ def menu(message):
     if text == "Об авторе":
         bot.send_message(chat_id,texts.about,disable_web_page_preview=True,reply_markup=markup.menuIn)
 
-    if text == "Привет":
+    elif text == "Привет":
         bot.send_message(chat_id,'Hi')
 
-    if text == "Функции":
+    elif text == "Функции":
         msg = bot.send_message(chat_id,text,reply_markup=markup.func)
         bot.register_next_step_handler(msg,funcMunu)
 
@@ -47,7 +47,7 @@ def funcMunu(message):
         msg = bot.send_message(chat_id,chat_id)
         bot.register_next_step_handler(msg,funcMunu)
 
-    if text == "Назад":
+    elif text == "Назад":
         msg = bot.send_message(chat_id,text,reply_markup=markup.menu)
         bot.register_next_step_handler(msg,menu)
 print('Run!')
