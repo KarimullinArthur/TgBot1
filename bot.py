@@ -1,5 +1,6 @@
 import telebot
 import sqlite3
+from function import *
 import markup 
 import texts
 from config import *
@@ -33,7 +34,7 @@ def menu(message):
         bot.send_message(chat_id,texts.about,disable_web_page_preview=True,reply_markup=markup.menuIn)
 
     elif text == "Привет":
-        bot.send_message(chat_id,'Hi')
+        bot.send_message(chat_id,hello())
 
     elif text == "Функции":
         msg = bot.send_message(chat_id,text,reply_markup=markup.func)
